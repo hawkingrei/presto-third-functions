@@ -1,12 +1,12 @@
 package cc.shanruifeng.functions.udfs;
 
-import com.facebook.presto.operator.scalar.ArrayUnionFunction;
 import com.facebook.presto.spi.Plugin;
 import com.google.common.collect.ImmutableSet;
 
 import java.util.Set;
 
 import cc.shanruifeng.functions.udfs.scalar.IsNullFunctions;
+import cc.shanruifeng.functions.udfs.scalar.array.ArrayUnionFunction;
 import cc.shanruifeng.functions.udfs.scalar.array.ArrayValueCountFunction;
 import cc.shanruifeng.functions.udfs.scalar.date.ChinaTypeOfDayFunction;
 import cc.shanruifeng.functions.udfs.scalar.date.DayOfWeekFunctions;
