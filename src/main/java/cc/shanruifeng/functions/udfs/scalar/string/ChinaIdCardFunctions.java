@@ -1,20 +1,21 @@
 package cc.shanruifeng.functions.udfs.scalar.string;
 
-import cc.shanruifeng.functions.udfs.model.ChinaIdArea;
-import cc.shanruifeng.functions.udfs.utils.ConfigUtils;
-import com.facebook.presto.operator.Description;
-import com.facebook.presto.operator.scalar.annotations.ScalarFunction;
+import com.facebook.presto.spi.function.Description;
+import com.facebook.presto.spi.function.ScalarFunction;
+import com.facebook.presto.spi.function.SqlType;
 import com.facebook.presto.spi.type.StandardTypes;
-import com.facebook.presto.type.SqlType;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
+
 import io.airlift.slice.Slice;
 import io.airlift.slice.Slices;
 
 import java.util.Map;
 
+import cc.shanruifeng.functions.udfs.model.ChinaIdArea;
+import cc.shanruifeng.functions.udfs.utils.ConfigUtils;
 /**
  * 中国身份证相关函数
  *

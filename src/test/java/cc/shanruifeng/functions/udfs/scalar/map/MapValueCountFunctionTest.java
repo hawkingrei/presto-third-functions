@@ -3,17 +3,20 @@ package cc.shanruifeng.functions.udfs.scalar.map;
 import com.facebook.presto.block.BlockEncodingManager;
 import com.facebook.presto.metadata.FunctionListBuilder;
 import com.facebook.presto.metadata.FunctionRegistry;
-import com.facebook.presto.metadata.OperatorType;
 import com.facebook.presto.spi.block.Block;
+import com.facebook.presto.spi.function.OperatorType;
 import com.facebook.presto.spi.type.BooleanType;
 import com.facebook.presto.sql.analyzer.FeaturesConfig;
 import com.facebook.presto.type.ArrayType;
 import com.facebook.presto.type.TypeRegistry;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
+
 import io.airlift.slice.Slice;
 import io.airlift.slice.Slices;
+
 import junit.framework.Assert;
+
 import org.junit.Test;
 
 import java.lang.invoke.MethodHandle;
@@ -51,7 +54,7 @@ public class MapValueCountFunctionTest {
         //construct ARRAY[3L]
         Block valueBlock = arrayBlockOf(INTEGER, 3L);
         TypeRegistry typeManager = new TypeRegistry();
-        FunctionRegistry functionRegistry = new FunctionRegistry(typeManager, new BlockEncodingManager(typeManager), new FeaturesConfig().setExperimentalSyntaxEnabled(true));
+        FunctionRegistry functionRegistry = new FunctionRegistry(typeManager, new BlockEncodingManager(typeManager), new FeaturesConfig());
 
         FunctionListBuilder builder = new FunctionListBuilder();
         functionRegistry.addFunctions(builder.getFunctions());
@@ -71,7 +74,7 @@ public class MapValueCountFunctionTest {
         Block mapBlock = mapBlockOf(INTEGER, VARCHAR, value);
 
         TypeRegistry typeManager = new TypeRegistry();
-        FunctionRegistry functionRegistry = new FunctionRegistry(typeManager, new BlockEncodingManager(typeManager), new FeaturesConfig().setExperimentalSyntaxEnabled(true));
+        FunctionRegistry functionRegistry = new FunctionRegistry(typeManager, new BlockEncodingManager(typeManager), new FeaturesConfig());
         FunctionListBuilder builder = new FunctionListBuilder();
         functionRegistry.addFunctions(builder.getFunctions());
         MethodHandle equalsMethod = functionRegistry.getScalarFunctionImplementation(internalOperator(OperatorType.EQUAL, BooleanType.BOOLEAN, ImmutableList.of(VARCHAR, VARCHAR))).getMethodHandle();
@@ -89,7 +92,7 @@ public class MapValueCountFunctionTest {
         Block mapBlock = mapBlockOf(INTEGER, INTEGER, value);
 
         TypeRegistry typeManager = new TypeRegistry();
-        FunctionRegistry functionRegistry = new FunctionRegistry(typeManager, new BlockEncodingManager(typeManager), new FeaturesConfig().setExperimentalSyntaxEnabled(true));
+        FunctionRegistry functionRegistry = new FunctionRegistry(typeManager, new BlockEncodingManager(typeManager), new FeaturesConfig());
         FunctionListBuilder builder = new FunctionListBuilder();
         functionRegistry.addFunctions(builder.getFunctions());
         MethodHandle equalsMethod = functionRegistry.getScalarFunctionImplementation(internalOperator(OperatorType.EQUAL, BooleanType.BOOLEAN, ImmutableList.of(INTEGER, INTEGER))).getMethodHandle();
@@ -107,7 +110,7 @@ public class MapValueCountFunctionTest {
         Block mapBlock = mapBlockOf(INTEGER, BOOLEAN, value);
 
         TypeRegistry typeManager = new TypeRegistry();
-        FunctionRegistry functionRegistry = new FunctionRegistry(typeManager, new BlockEncodingManager(typeManager), new FeaturesConfig().setExperimentalSyntaxEnabled(true));
+        FunctionRegistry functionRegistry = new FunctionRegistry(typeManager, new BlockEncodingManager(typeManager), new FeaturesConfig());
         FunctionListBuilder builder = new FunctionListBuilder();
         functionRegistry.addFunctions(builder.getFunctions());
         MethodHandle equalsMethod = functionRegistry.getScalarFunctionImplementation(internalOperator(OperatorType.EQUAL, BooleanType.BOOLEAN, ImmutableList.of(BOOLEAN, BOOLEAN))).getMethodHandle();
@@ -124,7 +127,7 @@ public class MapValueCountFunctionTest {
         Block mapBlock = mapBlockOf(INTEGER, DOUBLE, value);
 
         TypeRegistry typeManager = new TypeRegistry();
-        FunctionRegistry functionRegistry = new FunctionRegistry(typeManager, new BlockEncodingManager(typeManager), new FeaturesConfig().setExperimentalSyntaxEnabled(true));
+        FunctionRegistry functionRegistry = new FunctionRegistry(typeManager, new BlockEncodingManager(typeManager), new FeaturesConfig());
         FunctionListBuilder builder = new FunctionListBuilder();
         functionRegistry.addFunctions(builder.getFunctions());
         MethodHandle equalsMethod = functionRegistry.getScalarFunctionImplementation(internalOperator(OperatorType.EQUAL, BooleanType.BOOLEAN, ImmutableList.of(DOUBLE, DOUBLE))).getMethodHandle();

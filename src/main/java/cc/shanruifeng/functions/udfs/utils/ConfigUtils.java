@@ -1,10 +1,10 @@
 package cc.shanruifeng.functions.udfs.utils;
 
-import cc.shanruifeng.functions.udfs.model.ChinaIdArea;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.io.Closer;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,6 +15,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import cc.shanruifeng.functions.udfs.model.ChinaIdArea;
 
 /**
  * @author ruifeng.shan
@@ -29,7 +31,7 @@ public class ConfigUtils {
         Closer closer = Closer.create();
         try {
             InputStream inputStream = ConfigUtils.class.getResourceAsStream(fileName);
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"));
             closer.register(bufferedReader);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
@@ -59,6 +61,7 @@ public class ConfigUtils {
             }
         } catch (IOException e) {
             logger.error("get china id card map error. error is {}.", e);
+
             return map;
         }
 

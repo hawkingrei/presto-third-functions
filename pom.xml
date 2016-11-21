@@ -14,7 +14,7 @@
         <project.report.outputEncoding>UTF-8</project.report.outputEncoding>
         <project.report.inputEncoding>UTF-8</project.report.inputEncoding>
 
-        <presto.version>0.150</presto.version>
+        <presto.version>0.155</presto.version>
         <pinyin4j.version>2.5.0</pinyin4j.version>
         <commons-codec.version>1.10</commons-codec.version>
         <junit.version>4.12</junit.version>

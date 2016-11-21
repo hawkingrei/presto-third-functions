@@ -1,22 +1,25 @@
 package cc.shanruifeng.functions.udfs.scalar.array;
 
-import com.facebook.presto.operator.Description;
-import com.facebook.presto.operator.scalar.annotations.OperatorDependency;
-import com.facebook.presto.operator.scalar.annotations.ScalarFunction;
-import com.facebook.presto.operator.scalar.annotations.TypeParameter;
+
 import com.facebook.presto.spi.PrestoException;
 import com.facebook.presto.spi.StandardErrorCode;
 import com.facebook.presto.spi.block.Block;
+import com.facebook.presto.spi.function.Description;
+import com.facebook.presto.spi.function.OperatorDependency;
+import com.facebook.presto.spi.function.ScalarFunction;
+import com.facebook.presto.spi.function.SqlNullable;
+import com.facebook.presto.spi.function.SqlType;
+import com.facebook.presto.spi.function.TypeParameter;
 import com.facebook.presto.spi.type.StandardTypes;
 import com.facebook.presto.spi.type.Type;
-import com.facebook.presto.type.SqlType;
 import com.google.common.base.Throwables;
+
 import io.airlift.slice.Slice;
 
-import javax.annotation.Nullable;
 import java.lang.invoke.MethodHandle;
 
-import static com.facebook.presto.metadata.OperatorType.EQUAL;
+import static com.facebook.presto.spi.function.OperatorType.EQUAL;
+
 
 /**
  * @author ruifeng.shan
@@ -31,7 +34,7 @@ public class ArrayValueCountFunction {
     public static long valueCount(@TypeParameter("T") Type elementType,
                                   @OperatorDependency(operator = EQUAL, returnType = StandardTypes.BOOLEAN, argumentTypes = {"T", "T"}) MethodHandle equals,
                                   @SqlType("array(T)") Block arrayBlock,
-                                  @Nullable @SqlType("T") Block value) {
+                                  @SqlNullable @SqlType("T") Block value) {
         int count = 0;
         if (arrayBlock.getPositionCount() > 0) {
             for (int i = 0; i < arrayBlock.getPositionCount(); i++) {
@@ -62,7 +65,7 @@ public class ArrayValueCountFunction {
     public static long valueCount(@TypeParameter("T") Type elementType,
                                   @OperatorDependency(operator = EQUAL, returnType = StandardTypes.BOOLEAN, argumentTypes = {"T", "T"}) MethodHandle equals,
                                   @SqlType("array(T)") Block arrayBlock,
-                                  @Nullable @SqlType("T") Slice value) {
+        @SqlNullable @SqlType("T") Slice value) {
         int count = 0;
         if (arrayBlock.getPositionCount() > 0) {
             for (int i = 0; i < arrayBlock.getPositionCount(); i++) {
@@ -93,7 +96,7 @@ public class ArrayValueCountFunction {
     public static long valueCount(@TypeParameter("T") Type elementType,
                                   @OperatorDependency(operator = EQUAL, returnType = StandardTypes.BOOLEAN, argumentTypes = {"T", "T"}) MethodHandle equals,
                                   @SqlType("array(T)") Block arrayBlock,
-                                  @Nullable @SqlType("T") Long value) {
+                                  @SqlNullable @SqlType("T") Long value) {
         int count = 0;
         if (arrayBlock.getPositionCount() > 0) {
             for (int i = 0; i < arrayBlock.getPositionCount(); i++) {
@@ -124,7 +127,7 @@ public class ArrayValueCountFunction {
     public static long valueCount(@TypeParameter("T") Type elementType,
                                   @OperatorDependency(operator = EQUAL, returnType = StandardTypes.BOOLEAN, argumentTypes = {"T", "T"}) MethodHandle equals,
                                   @SqlType("array(T)") Block arrayBlock,
-                                  @Nullable @SqlType("T") Boolean value) {
+                                  @SqlNullable @SqlType("T") Boolean value) {
         int count = 0;
         if (arrayBlock.getPositionCount() > 0) {
             for (int i = 0; i < arrayBlock.getPositionCount(); i++) {
@@ -155,7 +158,7 @@ public class ArrayValueCountFunction {
     public static long valueCount(@TypeParameter("T") Type elementType,
                                   @OperatorDependency(operator = EQUAL, returnType = StandardTypes.BOOLEAN, argumentTypes = {"T", "T"}) MethodHandle equals,
                                   @SqlType("array(T)") Block arrayBlock,
-                                  @Nullable @SqlType("T") Double value) {
+                                  @SqlNullable @SqlType("T") Double value) {
         int count = 0;
         if (arrayBlock.getPositionCount() > 0) {
             for (int i = 0; i < arrayBlock.getPositionCount(); i++) {

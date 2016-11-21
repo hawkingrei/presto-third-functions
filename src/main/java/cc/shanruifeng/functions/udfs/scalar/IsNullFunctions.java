@@ -1,14 +1,15 @@
 package cc.shanruifeng.functions.udfs.scalar;
 
-import com.facebook.presto.operator.Description;
-import com.facebook.presto.operator.scalar.annotations.ScalarFunction;
-import com.facebook.presto.operator.scalar.annotations.TypeParameter;
-import com.facebook.presto.spi.block.Block;
-import com.facebook.presto.spi.type.StandardTypes;
-import com.facebook.presto.type.SqlType;
-import io.airlift.slice.Slice;
 
-import javax.annotation.Nullable;
+import com.facebook.presto.spi.block.Block;
+import com.facebook.presto.spi.function.Description;
+import com.facebook.presto.spi.function.ScalarFunction;
+import com.facebook.presto.spi.function.SqlNullable;
+import com.facebook.presto.spi.function.SqlType;
+import com.facebook.presto.spi.function.TypeParameter;
+import com.facebook.presto.spi.type.StandardTypes;
+
+import io.airlift.slice.Slice;
 
 /**
  * @author ruifeng.shan
@@ -20,31 +21,31 @@ import javax.annotation.Nullable;
 public class IsNullFunctions {
     @TypeParameter("T")
     @SqlType(StandardTypes.BOOLEAN)
-    public static boolean isNullSlice(@Nullable @SqlType("T") Slice value) {
+    public static boolean isNullSlice(@SqlNullable @SqlType("T") Slice value) {
         return (value == null);
     }
 
     @TypeParameter("T")
     @SqlType(StandardTypes.BOOLEAN)
-    public static boolean isNullLong(@Nullable @SqlType("T") Long value) {
+    public static boolean isNullLong(@SqlNullable @SqlType("T") Long value) {
         return (value == null);
     }
 
     @TypeParameter("T")
     @SqlType(StandardTypes.BOOLEAN)
-    public static boolean isNullDouble(@Nullable @SqlType("T") Double value) {
+    public static boolean isNullDouble(@SqlNullable @SqlType("T") Double value) {
         return (value == null);
     }
 
     @TypeParameter("T")
     @SqlType(StandardTypes.BOOLEAN)
-    public static boolean isNullBoolean(@Nullable @SqlType("T") Boolean value) {
+    public static boolean isNullBoolean(@SqlNullable @SqlType("T") Boolean value) {
         return (value == null);
     }
 
     @TypeParameter("T")
     @SqlType(StandardTypes.BOOLEAN)
-    public static boolean isNullBlock(@Nullable @SqlType("T") Block value) {
+    public static boolean isNullBlock(@SqlNullable @SqlType("T") Block value) {
         return (value == null);
     }
 }

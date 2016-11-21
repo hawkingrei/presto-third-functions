@@ -25,6 +25,7 @@ public class ChinaIdCardFunctionsTest {
     @Test
     public void testGetIdCardProvince() throws Exception {
         Slice result = ChinaIdCardFunctions.getIdCardProvince(Slices.utf8Slice("110101198901084517"));
+        System.out.print(result.toStringUtf8());
         Assert.assertEquals("北京市", result.toStringUtf8());
     }
 
