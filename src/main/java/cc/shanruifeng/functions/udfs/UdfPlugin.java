@@ -19,17 +19,17 @@ public class UdfPlugin implements Plugin {
 
         return ImmutableSet.<Class<?>>builder()
             .add(JsonArrayExtractFunction.class)
-      //      .add(HashFunctions.class)
-//          .add(IsNullFunctions.class)
- //           .add(MapValueCountFunction.class)
- //           .add(ArrayUnionFunction.class)
- //           .add(ArrayValueCountFunction.class)
-  //          .add(ChinaTypeOfDayFunction.class)
-    //        .add(DayOfWeekFunctions.class)
- //           .add(ZodiacSignFunctions.class)
- //           .add(GeographicFunctions.class)
- //           .add(ChinaIdCardFunctions.class)
- //           .add(ChineseToPinYinFunctions.class)
+//            .add(HashFunctions.class)
+//            .add(IsNullFunctions.class)
+//            .add(MapValueCountFunction.class)
+//            .add(ArrayUnionFunction.class)
+//            .add(ArrayValueCountFunction.class)
+//            .add(ChinaTypeOfDayFunction.class)
+//            .add(DayOfWeekFunctions.class)
+//            .add(ZodiacSignFunctions.class)
+//            .add(GeographicFunctions.class)
+//            .add(ChinaIdCardFunctions.class)
+//            .add(ChineseToPinYinFunctions.class)
             .build();
     }
 
