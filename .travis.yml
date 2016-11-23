@@ -5,8 +5,7 @@ jdk:
 
 before_cache:
   # Make the cache stable between builds by removing build output
-  - rm -rf $HOME/.m2/repository/cc/shanruifeng
-
+  - rm -rf $HOME/.m2/repository/com/suphawking
 cache:
   directories:
     - $HOME/.m2/repository
