@@ -1,6 +1,9 @@
 package cc.shanruifeng.functions.udfs;
 
+import com.facebook.presto.operator.scalar.JsonFunctions;
+import com.facebook.presto.operator.scalar.JsonPath;
 import com.facebook.presto.spi.Plugin;
+import com.facebook.presto.type.JsonPathType;
 import com.google.common.collect.ImmutableSet;
 
 import java.util.Set;
@@ -16,7 +19,11 @@ public class UdfPlugin implements Plugin {
 
     @Override
     public Set<Class<?>> getFunctions(){
+
         return ImmutableSet.<Class<?>>builder()
+            .add(JsonPathType.class)
+            .add(JsonFunctions.class)
+            .add(JsonPath.class)
             .add(JsonArrayExtractFunction.class)
       //      .add(HashFunctions.class)
 //          .add(IsNullFunctions.class)

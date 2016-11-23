@@ -16,7 +16,6 @@ import io.airlift.slice.Slice;
 
 import static com.facebook.presto.spi.type.VarcharType.VARCHAR;
 import static com.facebook.presto.type.TypeJsonUtils.appendToBlockBuilder;
-
 /**
  * @author ruifeng.shan
  * @date 2016-07-21
@@ -39,7 +38,7 @@ public class JsonArrayExtractFunction {
         }
         return blockBuilder.build();
     }
-
+/*
     @ScalarFunction("json_array_extract_scalar")
     @Description("extract json array value by given jsonPath.")
     @SqlType("array(varchar)")
@@ -56,4 +55,5 @@ public class JsonArrayExtractFunction {
         }
         return blockBuilder.build();
     }
+    */
 }
