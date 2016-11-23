@@ -1,4 +1,5 @@
-# presto-third-functions [![Build Status](https://travis-ci.org/hawkingrei/presto-third-functions.svg?branch=master)](https://travis-ci.org/hawkingrei/presto-third-functions)
+# presto-third-functions [![Build Status](https://travis-ci.org/hawkingrei/presto-third-functions.svg?branch=master)](https://travis-ci.org/hawkingrei/presto-third-functions)[![codecov](https://codecov.io/gh/hawkingrei/presto-third-functions/branch/master/graph/badge.svg)](https://codecov.io/gh/hawkingrei/presto-third-functions)
+
 [Readme in English](https://github.com/aaronshan/presto-third-functions/tree/master/README-en.md)
 
 ## 简介
