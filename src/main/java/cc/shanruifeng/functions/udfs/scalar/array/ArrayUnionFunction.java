@@ -1,6 +1,5 @@
 package cc.shanruifeng.functions.udfs.scalar.array;
 
-
 import com.facebook.presto.operator.aggregation.TypedSet;
 import com.facebook.presto.spi.block.Block;
 import com.facebook.presto.spi.block.BlockBuilder;

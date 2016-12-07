@@ -38,7 +38,7 @@ public class JsonArrayExtractFunction {
         }
         return blockBuilder.build();
     }
-/*
+
     @ScalarFunction("json_array_extract_scalar")
     @Description("extract json array value by given jsonPath.")
     @SqlType("array(varchar)")
@@ -55,5 +55,4 @@ public class JsonArrayExtractFunction {
         }
         return blockBuilder.build();
     }
-    */
 }
