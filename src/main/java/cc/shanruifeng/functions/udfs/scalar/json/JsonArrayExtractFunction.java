@@ -22,8 +22,8 @@ import static com.facebook.presto.type.TypeJsonUtils.appendToBlockBuilder;
  * @time 15:43
  */
 public class JsonArrayExtractFunction {
-    @ScalarFunction("json_array_extract")
     @Description("extract json array value by given jsonPath.")
+    @ScalarFunction("json_array_extract")
     @SqlType("array<varchar>")
     public static Block jsonArrayExtract(@SqlType(StandardTypes.VARCHAR) Slice json, @SqlType(JsonPathType.NAME) JsonPath jsonPath) {
         Long length = JsonFunctions.jsonArrayLength(json);
@@ -39,8 +39,9 @@ public class JsonArrayExtractFunction {
         return blockBuilder.build();
     }
 
-    @ScalarFunction("json_array_extract_scalar")
+
     @Description("extract json array value by given jsonPath.")
+    @ScalarFunction("json_array_extract_scalar")
     @SqlType("array<varchar>")
     public static Block jsonArrayExtractScalar(@SqlType(StandardTypes.VARCHAR) Slice json, @SqlType(JsonPathType.NAME) JsonPath jsonPath) {
         Long length = JsonFunctions.jsonArrayLength(json);
