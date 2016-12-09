@@ -42,8 +42,6 @@ public class JsonArrayExtractFunctionTest {
         Block expectArray = arrayBlockOf(VARCHAR, "13", "18", "12");
         Slice inputJson = Slices.utf8Slice("[{\"a\":{\"b\":13}}, {\"a\":{\"b\":18}}, {\"a\":{\"b\":12}}]");
         Block resultArray = JsonArrayExtractFunction.jsonArrayExtract(inputJson, new JsonPath("$.a.b"));
-        System.out.println(resultArray.toString());
-        System.out.println(expectArray.toString());
 
         TypeRegistry typeManager = new TypeRegistry();
         FunctionRegistry functionRegistry = new FunctionRegistry(typeManager, new BlockEncodingManager(typeManager), new FeaturesConfig());
@@ -52,7 +50,6 @@ public class JsonArrayExtractFunctionTest {
         MethodHandle equalsMethod = functionRegistry.getScalarFunctionImplementation(internalOperator(OperatorType.EQUAL, BooleanType.BOOLEAN, ImmutableList.of(new ArrayType(VARCHAR), new ArrayType(VARCHAR)))).getMethodHandle();
         Assert.assertEquals(true, (boolean) equalsMethod.invokeExact(resultArray, expectArray));
     }
-
 
     @Test
     public void testVarcharJsonExtractScalar() throws Throwable {
@@ -65,6 +62,8 @@ public class JsonArrayExtractFunctionTest {
         FunctionListBuilder builder = new FunctionListBuilder();
         functionRegistry.addFunctions(builder.getFunctions());
         MethodHandle equalsMethod = functionRegistry.getScalarFunctionImplementation(internalOperator(OperatorType.EQUAL, BooleanType.BOOLEAN, ImmutableList.of(new ArrayType(VARCHAR), new ArrayType(VARCHAR)))).getMethodHandle();
-        Assert.assertEquals(false, (boolean) equalsMethod.invokeExact(resultArray, expectArray));
+        Assert.assertEquals(true, (boolean) equalsMethod.invokeExact(resultArray, expectArray));
     }
+
+
 }

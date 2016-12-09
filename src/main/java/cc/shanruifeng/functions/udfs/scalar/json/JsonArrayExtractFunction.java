@@ -15,7 +15,6 @@ import com.facebook.presto.type.JsonPathType;
 import io.airlift.slice.Slice;
 
 import static com.facebook.presto.spi.type.VarcharType.VARCHAR;
-import static com.facebook.presto.type.TypeJsonUtils.appendToBlockBuilder;
 
 /**
  * @author ruifeng.shan
@@ -34,19 +33,17 @@ public class JsonArrayExtractFunction {
     if (length == null) {
       return null;
     }
+
     BlockBuilder blockBuilder = VARCHAR.createBlockBuilder(new BlockBuilderStatus(), length.intValue());
-    appendToBlockBuilder(VARCHAR, json, blockBuilder);
-    /*
+
     for (int i = 0; i < length; i++) {
       Slice content = JsonFunctions.varcharJsonArrayGet(json, i);
       Slice result = JsonFunctions.varcharJsonExtract(content, jsonPath);
-      appendToBlockBuilder(VARCHAR, result, blockBuilder);
+      VARCHAR.writeSlice(blockBuilder, result);
+      //appendToBlockBuilder(VARCHAR, result, blockBuilder);
     }
-    */
     return blockBuilder.build();
   }
-
-
 
 
   @Description("extract json array value by given jsonPath.")

@@ -25,7 +25,6 @@ public final class StructuralTestUtil {
         for (Object value : values) {
             appendToBlockBuilder(elementType, value, blockBuilder);
         }
-        //System.out.println(blockBuilder.build());
         return blockBuilder.build();
     }
 
