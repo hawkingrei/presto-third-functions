@@ -15,6 +15,7 @@ import com.facebook.presto.type.JsonPathType;
 import io.airlift.slice.Slice;
 
 import static com.facebook.presto.spi.type.VarcharType.VARCHAR;
+import static com.facebook.presto.type.TypeJsonUtils.appendToBlockBuilder;
 
 /**
  * @author ruifeng.shan
@@ -22,24 +23,30 @@ import static com.facebook.presto.spi.type.VarcharType.VARCHAR;
  * @time 15:43
  */
 public class JsonArrayExtractFunction {
+
+
+
   @Description("extract json array value by given jsonPath.")
   @ScalarFunction("json_array_extract")
   @SqlType("array(varchar)")
   public static Block jsonArrayExtract(@SqlType(StandardTypes.VARCHAR) Slice json, @SqlType(JsonPathType.NAME) JsonPath jsonPath) {
     Long length = JsonFunctions.jsonArrayLength(json);
-    System.out.println(length);
     if (length == null) {
       return null;
     }
-    System.out.println(length.intValue());
     BlockBuilder blockBuilder = VARCHAR.createBlockBuilder(new BlockBuilderStatus(), length.intValue());
+    appendToBlockBuilder(VARCHAR, json, blockBuilder);
+    /*
     for (int i = 0; i < length; i++) {
       Slice content = JsonFunctions.varcharJsonArrayGet(json, i);
       Slice result = JsonFunctions.varcharJsonExtract(content, jsonPath);
-      VARCHAR.writeSlice(blockBuilder, result);
+      appendToBlockBuilder(VARCHAR, result, blockBuilder);
     }
+    */
     return blockBuilder.build();
   }
+
+
 
 
   @Description("extract json array value by given jsonPath.")
