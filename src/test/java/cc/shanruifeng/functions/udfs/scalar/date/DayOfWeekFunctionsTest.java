@@ -23,5 +23,6 @@ public class DayOfWeekFunctionsTest {
         long result = DayOfWeekFunctions.dayOfWeek(Slices.utf8Slice("2016-07-12"));
         Assert.assertEquals(2, result);
         Assert.assertEquals(-1,DayOfWeekFunctions.dayOfWeek(null));
+        Assert.assertEquals(-1,DayOfWeekFunctions.dayOfWeek(Slices.utf8Slice("abc")));
     }
 }
