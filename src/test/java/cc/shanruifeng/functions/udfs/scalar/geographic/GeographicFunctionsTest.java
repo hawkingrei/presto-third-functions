@@ -10,6 +10,7 @@ import org.junit.Test;
 import java.util.HashMap;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -18,6 +19,7 @@ import static org.junit.Assert.assertTrue;
  * @time 15:08
  */
 public class GeographicFunctionsTest {
+  private static final double DELTA = 1e-15;
   @Test
   public void testFunctionCreate() throws Exception {
     FunctionListBuilder builder = new FunctionListBuilder();
@@ -33,5 +35,11 @@ public class GeographicFunctionsTest {
     String resesult = JSON.toJSONString(testresult);
 
     assertTrue(gcj.toString(UTF_8).equals(resesult.toString()));
+  }
+
+  @Test
+  public void test_wgs_distance() {
+    double result = GeographicFunctions.WGS84Distance(60,20,60,22);
+    assertEquals(111190.69257499708,result, DELTA);
   }
 }
