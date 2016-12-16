@@ -8,14 +8,6 @@ import java.util.Set;
 import cc.shanruifeng.functions.udfs.scalar.IsNullFunctions;
 import cc.shanruifeng.functions.udfs.scalar.array.ArrayUnionFunction;
 import cc.shanruifeng.functions.udfs.scalar.array.ArrayValueCountFunction;
-import cc.shanruifeng.functions.udfs.scalar.date.ChinaTypeOfDayFunction;
-import cc.shanruifeng.functions.udfs.scalar.date.DayOfWeekFunctions;
-import cc.shanruifeng.functions.udfs.scalar.date.ZodiacSignFunctions;
-import cc.shanruifeng.functions.udfs.scalar.geographic.GeographicFunctions;
-import cc.shanruifeng.functions.udfs.scalar.map.MapValueCountFunction;
-import cc.shanruifeng.functions.udfs.scalar.string.ChinaIdCardFunctions;
-import cc.shanruifeng.functions.udfs.scalar.string.ChineseToPinYinFunctions;
-import cc.shanruifeng.functions.udfs.scalar.string.HashFunctions;
 
 /**
  * @author ruifeng.shan
@@ -24,23 +16,15 @@ import cc.shanruifeng.functions.udfs.scalar.string.HashFunctions;
  */
 public class UdfPlugin implements Plugin {
 
-    @Override
-    public Set<Class<?>> getFunctions(){
+  @Override
+  public Set<Class<?>> getFunctions() {
 
-        return ImmutableSet.<Class<?>>builder()
-            //.add(JsonArrayExtractFunction.class)
-            .add(HashFunctions.class)
-            .add(IsNullFunctions.class)
-            .add(MapValueCountFunction.class)
-            .add(ArrayUnionFunction.class)
-            .add(ArrayValueCountFunction.class)
-            .add(ChinaTypeOfDayFunction.class)
-            .add(DayOfWeekFunctions.class)
-            .add(ZodiacSignFunctions.class)
-            .add(GeographicFunctions.class)
-            .add(ChinaIdCardFunctions.class)
-            .add(ChineseToPinYinFunctions.class)
-            .build();
-    }
+    return ImmutableSet.<Class<?>>builder()
+        //.add(JsonArrayExtractFunction.class)
+        .add(IsNullFunctions.class)
+        .add(ArrayUnionFunction.class)
+        .add(ArrayValueCountFunction.class)
+        .build();
+  }
 
 }
