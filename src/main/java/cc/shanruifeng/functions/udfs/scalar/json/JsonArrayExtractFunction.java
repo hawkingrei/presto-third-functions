@@ -10,7 +10,6 @@ import com.facebook.presto.spi.function.Description;
 import com.facebook.presto.spi.function.ScalarFunction;
 import com.facebook.presto.spi.function.SqlType;
 import com.facebook.presto.spi.type.StandardTypes;
-import com.facebook.presto.type.JsonPathType;
 
 import io.airlift.slice.Slice;
 
@@ -28,7 +27,7 @@ public class JsonArrayExtractFunction {
   @Description("extract json array value by given jsonPath.")
   @ScalarFunction("json_array_extract")
   @SqlType("array(varchar)")
-  public static Block jsonArrayExtract(@SqlType(StandardTypes.VARCHAR) Slice json, @SqlType(JsonPathType.NAME) JsonPath jsonPath) {
+  public static Block jsonArrayExtract(@SqlType(StandardTypes.VARCHAR) Slice json, @SqlType("JsonPath") JsonPath jsonPath) {
     Long length = JsonFunctions.jsonArrayLength(json);
     if (length == null) {
       return null;
@@ -49,7 +48,7 @@ public class JsonArrayExtractFunction {
   @Description("extract json array value by given jsonPath.")
   @ScalarFunction("json_array_extract_scalar")
   @SqlType("array(varchar)")
-  public static Block jsonArrayExtractScalar(@SqlType(StandardTypes.VARCHAR) Slice json, @SqlType(JsonPathType.NAME) JsonPath jsonPath) {
+  public static Block jsonArrayExtractScalar(@SqlType(StandardTypes.VARCHAR) Slice json, @SqlType("JsonPath") JsonPath jsonPath) {
     Long length = JsonFunctions.jsonArrayLength(json);
     if (length == null) {
       return null;
